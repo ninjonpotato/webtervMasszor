@@ -1,0 +1,117 @@
+$grey: rgb(82, 82, 82);
+h2 {
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 300px;
+}
+#employees {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+.employee {
+    display: flex;
+    flex-direction: column;
+    background-color: #f2d6a7a9;
+    align-items: center;
+    box-shadow: 0px 0px 5px 1px black;
+    width:60%;
+    margin: 20px;
+    border-radius: 5px 5px 10px 10px;
+    h3 {
+        font-size: 3em;
+        margin: 20px;
+        
+    }
+    .emp-innerBox {
+        display: flex;
+        flex-direction: row;
+       justify-content: center;
+
+
+        img {
+            width: 400px;
+            margin: 20px;
+            border: 2px solid black;
+            border-radius: 40px 40px 40px 0;
+        }
+        p {
+            font-size: 2em;
+            width: 50%;
+            margin: 20px;
+        }
+    }
+}
+#place {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+.szoba {
+    margin: 25px;
+    width: 700px;
+    background-color: antiquewhite;
+    border-radius: 10px 10px 20px 20px;
+    p {
+        padding: 20px;
+        font-size: 1.5em;
+        color: rgb(82, 82, 82);
+        font-weight: bold;
+    }
+    img {
+        width: 100%;
+        border-radius: 10px 10px 0px 0px;
+    }
+}
+}
+
+@media screen and (max-width: 700px) {
+    #place {
+    .szoba {
+        margin: 20px;
+        width: 500px;
+        background-color: antiquewhite;
+        border-radius: 10px 10px 20px 20px;
+        p {
+            padding: 20px;
+            font-size: 1.5em;
+            color: $grey;
+            font-weight: bold;
+        }
+        img {
+            width: 100%;
+            border-radius: 10px 10px 0px 0px;
+        }
+    }
+    }
+    .employee {
+        width: 500px;
+        .emp-innerBox {
+            img {
+                margin-right: 0;
+            }
+            p {
+                margin-right: 60px;
+                word-break: break-all;
+                }
+        }
+}
+form {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    font-size: 30px;
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 20px;
+    button {
+        font-size: 30px;
+    }
+
+}
+}

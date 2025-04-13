@@ -1,0 +1,178 @@
+$grey: rgb(82, 82, 82);
+$lightgrey: rgba(255, 255, 255, 0.495);
+$brown: #f1b58aa9;
+#service {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+h2 {
+    text-align: center;
+}
+
+mat-card {
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 20%;
+}
+mat-chip-option.mat-mdc-chip-selected {
+    background-color:$lightgrey !important;
+    border: 1px solid black !important;
+  }
+  #datePicker{
+    display: flex;
+    justify-content: center;
+  }
+
+  ::ng-deep .mat-calendar {
+    background-color:rgba(255, 255, 255, 0.89) !important;
+    border: 1px solid black;
+    border-radius: 0px 0px 10px 10px;
+  }
+  
+
+#listBox {
+    height: fit-content;
+    overflow: scroll;
+}
+#employeeBox {
+    width: 300px}
+#timetable {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    overflow: scroll;
+    #table-container {
+        font-size: 2em;
+        border: 2px solid black;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            padding: 20px;
+    
+        }
+        tr td {
+            width: 100px;
+        }
+        td,th {
+        
+            text-align: center;
+            padding: 20px;
+            transition: 0.1s all;
+
+
+        }
+        tr td:first-child {
+            font-weight: bold;
+        }
+        tr:nth-child(odd) {
+            background-color: rgba(255, 255, 255, 0.627);
+        }
+        tr:nth-child(even) {
+            background-color: rgb(171, 171, 171,0.627);
+        }
+        tr .hely:hover{
+            background-color: rgba(98, 255, 0, 0.502);
+            cursor: pointer;
+        }
+        .foglalt {
+            background-color: rgba(255, 0, 0, 0.73);
+        }
+        
+        tr:hover{
+            background-color: rgb(255, 255, 255);
+            
+        }
+     
+    }
+
+}
+#timetable-mobile {
+width: 100%;
+text-align: center;
+display: none;
+font-size: 3em;
+#ido-container {
+    border-top: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: $grey;
+}
+.ido {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    border-top: 1px solid $grey;
+    border-left: 1px solid $grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ido:nth-child(odd) {
+    border-left: none;
+}
+.ido:nth-child(1),.ido:nth-child(2) {
+   border-top: none;
+}
+}
+@media screen and (max-width: 700px) {
+    .container {
+display: flex;
+flex-direction: column;
+font-size: 30px !important;
+    }
+    .foglalt {
+        background-color: red;
+    }
+    #service {
+        flex-direction: column;
+     }
+    #listBox {
+    height: fit-content;
+        .option {
+        font-size: 100px !important;
+        }
+    }
+    mat-card,#employeeBox{
+    width: 100%;
+    .mat-mdc-chip-set-stacked {
+
+       mat-chip-option {
+        width: 100%;
+        padding: 10px;
+        font-size: 100px;
+       }
+       a {
+        font-size: 30px;
+       }
+    }
+    }
+    #datePicker {
+       flex-flow: column;
+       padding-top: 30px;
+    }
+
+    #timetable, #pc-date{
+        display: none;
+  
+      }
+      #timetable-mobile{
+          display: block;
+          button {
+            font-size: 50px;
+            padding: 10px;
+            width: 100px;
+            
+        }
+      }
+      .ido {
+
+        a {
+            font-size: 40px;
+        }
+      }
+
+}

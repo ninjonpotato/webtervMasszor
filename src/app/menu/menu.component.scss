@@ -1,0 +1,46 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+    a {
+        padding-top: 10px;
+        border-bottom: 2px solid black;
+        width: 10%;
+        color:  rgb(63, 63, 63);
+        text-align: center;
+        transition: 0.3s all;
+        font-size: 20px;
+        text-decoration: none;
+    }
+    a:hover {
+        border-color: #c40000a2;
+        color: black;
+        cursor: pointer;
+        scale: 120%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+       flex-direction: column;
+       flex-wrap: wrap;
+       width: 100%;
+      // background-image: url("/assets/Images/logo.jpeg");
+     //  background-size: 100% 100%;
+     //  background-repeat: no-repeat;
+    
+       a {
+        text-align: left;
+        width: auto;
+        font-size: 30px;
+        padding: 20px;
+        border: none;
+       }
+       a:hover {
+        scale: 100%;
+        background-color: antiquewhite;
+       }
+    }
+}

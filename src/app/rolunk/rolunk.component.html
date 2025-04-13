@@ -1,0 +1,58 @@
+<h2>A hely ahol a csoda történik</h2>
+<button mat-raised-button (click)="show()">
+    @if(isOpen) {
+        Mégsem
+    }
+    @else {
+        Kérdésem lenne!
+    }
+
+</button>
+<form (ngSubmit)="ask()" id="formField" [ngStyle]="{'display':isOpen? 'flex':'none'}">
+        <mat-card-header>
+            <mat-card-title>Ha szeretnéd kikérni a véleményünket csak kérdezz!</mat-card-title>
+        </mat-card-header>
+          <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" type="email" placeholder="gipszjakab@gmail.com" [formControl]="email"><br>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>Kérdés</mat-label>
+        <textarea matInput placeholder="Napok óta fáj a hátam, melyik masszázst válasszam?" [formControl]="uzenet"></textarea><br>
+    </mat-form-field>
+    <mat-card-actions>
+    <button mat-raised-button color="primary" id="send" >Küldés</button>
+    </mat-card-actions>
+</form>
+<div id="place">
+    <div class="szoba">
+    <img src="assets/Images/place.jpg">
+    <p>
+        Szuperpuha ágy, bársony lepedő, kellemes társaság, mi kell még?
+        Itt foglal helyet a forró köves masszázs és az agymasszázs is.
+    </p>
+    </div>
+    <div class="szoba">
+        <img src="assets/Images/thai_place.JPG">
+        <p>
+           A szoba kellemes szinei és pályos tulaja teljesen elfeletteti veled hogy éppen a kezedet tépik le a helyéről.
+           Itt foglal helyet a thai és hagyományos masszázs is.
+        </p>
+    </div>
+</div>
+
+
+<h2>Alkalmazottaink</h2>
+<div id="employees">
+    @for(employee of employees; track $index) {
+        <mat-card class="employee">
+            <mat-card-header>
+                <h1>{{employee.name}}</h1>
+            </mat-card-header>
+            <mat-card-content class="emp-innerBox">
+                <img [src]="employee.img">
+                <p>{{employee.leiras}}
+            </mat-card-content>
+        </mat-card>
+    }
+</div>

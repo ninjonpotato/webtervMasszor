@@ -1,0 +1,106 @@
+<div class="container">
+
+    <!--Szolgáltatások kilistázva-->
+    <div id="service">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Válasszon ki egy szolgáltatást</mat-card-title>
+          </mat-card-header>
+          <mat-card-actions>
+            <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="select a shirt size" id="listBox">
+                @for(service of services; track $index) {
+                    <mat-chip-option [selected] = service.selected (click)="showEmployees(service)" class="option">
+                        <a>{{ service.name }}</a>
+                    </mat-chip-option>
+                }
+
+            </mat-chip-listbox>
+          </mat-card-actions>
+
+      </mat-card>
+      @if(isServiceChoosen) {
+        <mat-card id="employeeBox">
+            <mat-card-header>
+                <mat-card-title>Válassza ki egy munkatársunkat</mat-card-title>
+              </mat-card-header>
+              <mat-card-actions>
+                <mat-chip-listbox class="mat-mdc-chip-set-stacked">
+                        @for(employee of selectedArray; track $index) {
+                                <mat-chip-option (click)="showTime(employee)" [selected]="employee.selected">
+                                    <a>{{ employee.name }}</a>
+                                </mat-chip-option>
+                        }    
+                </mat-chip-listbox>
+              </mat-card-actions>
+          </mat-card>
+      }
+      </div>
+      <div id="datePicker">
+      @if(isEmployeeChoosen) {
+        <mat-form-field >
+            <mat-label>Válassz napot!</mat-label>
+            <input matInput [matDatepicker]="picker" (dateInput)="showTable($event)">
+            <mat-hint>ÉÉÉÉ/HH/NN</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      }
+      </div>
+
+
+   @if(datum != null) {
+    <h2>Időpontok</h2>
+    <!--ciklussal-->
+    <div id="timetable">
+        <div id="table-container">
+        <table>
+            <tr>
+                <th>Óra</th>
+                @for(nap of napok; track $index) {
+                    <th>
+                    {{nap}}
+                </th>
+                }
+           
+            </tr>
+            @for(hely of timetable; track $index) {
+                <tr>
+                    <td>{{hely.time}}</td>
+                    @for(h of hely.reserved; track $index) {
+                        <td [ngClass] = "{'foglalt':h == 'foglalt'}" class="hely" (click)="helyetFoglal(hely,$index,h)">
+                            @if(h == "hely")
+                            {
+                                szabad
+                            }
+                            @else {
+                                {{h}}
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        
+        </table>
+    </div>
+    </div>
+    <div id="timetable-mobile">
+        <a id="nap"><button mat-button (click)="elozo()"><-</button>{{selectedDay}}<button mat-button (click)="kovi()">-></button></a>
+            <div id="ido-container">
+                @for(hely of helyek; track $index) {
+                    <div class="ido" [ngClass]="{'foglalt':hely.hely == 'foglalt'}" (click)="helyetFoglal(hely,-1,hely.hely)">
+                        <a>{{hely.time}} <br> 
+                            @if(hely.hely == "hely")
+                            {
+                                szabad
+                            }
+                            @else {
+                                foglalt
+                            }
+                        </a>
+                    </div>
+                }
+            </div>
+    </div>
+   }
+
+</div>

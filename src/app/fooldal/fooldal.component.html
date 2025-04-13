@@ -1,0 +1,50 @@
+<div class="container">
+    <div id="side-by-side-container">
+    <div id="hirek">
+        <h2>Hírek</h2>
+    <div class="hir-container">
+        <ul>
+            @for(h of hirek; track $index) {
+                <li (click)="openHir(h)">{{h.headline | uppercase}}</li>
+            }
+
+        </ul>
+        
+    </div>
+    </div>
+    <mat-card id="hir-content" [ngStyle] = "{'display':isOpen? 'block':'none'}" appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>{{hir.headline | uppercase}}
+                </mat-card-title>
+            </mat-card-header>
+        <img mat-card-img [src]="hir.img">
+        <mat-card-content>
+        <p>{{hir.text}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button (click)="bezarHir()">Bezár</button>
+          </mat-card-actions>
+    </mat-card>
+    <div id="services">
+        <h2>Szolgáltatásaink</h2>
+        <div id="services-inner">
+            @for(service of services; track $index) {
+                <mat-card class="service" appearance="outlined" (click) ="atiranyit(service)" >
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h3>{{service.name}}</h3>
+                            </mat-card-title>
+                        </mat-card-header>
+                    <img mat-card-img [src]="service.img"> 
+                    <mat-card-content>
+                    <p>{{service.text}}</p>
+                    </mat-card-content>
+                </mat-card>
+            }
+        </div>
+
+    </div>
+
+
+    </div>
+</div>

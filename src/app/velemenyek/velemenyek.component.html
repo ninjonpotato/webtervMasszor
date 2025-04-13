@@ -1,0 +1,31 @@
+<div id="container">
+    <div id="reviews">
+        @for(review of reviews; track $index) {
+            <div class="review">
+                <a>{{review.name}}</a>
+                <p>{{review.body}}</p>
+            </div>
+        }
+    </div>
+        <mat-card id="make-review">
+            <form (ngSubmit)="velemenyez()">
+            <mat-card-header>
+                <mat-card-title>Nekünk számít a vélményed!</mat-card-title>
+            </mat-card-header>
+              <mat-form-field>
+            <mat-label>Név</mat-label>
+            <input matInput type="text" placeholder="Gipsz Jakab" [formControl]="nev"><br>
+            </mat-form-field>
+            <mat-form-field>
+            <mat-label>Vélemény</mat-label>
+            <textarea matInput placeholder="Rettentően megvagyok a hellyel és a szolgáltatással elégedve" [formControl]="uzenet"></textarea><br>
+        </mat-form-field>
+        <mat-card-actions>
+        <button mat-raised-button color="primary" id="send" >Küldés</button>
+        </mat-card-actions>
+    </form>
+        </mat-card>
+
+</div>
+
+
