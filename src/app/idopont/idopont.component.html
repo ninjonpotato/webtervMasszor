@@ -1,8 +1,7 @@
-<div id="load" [ngStyle]="{'display': isLoading? 'flex' : 'none'}">
-<mat-spinner><p>asd</p></mat-spinner>
-</div>
 <div class="container">
-    <!--Szolgáltatások kilistázva-->
+    <div id="load" [ngStyle]="{'display': isLoading? 'flex' : 'none'}">
+        <mat-spinner><p>asd</p></mat-spinner>
+    </div>
     <div id="service">
     <mat-card>
         <mat-card-header>
@@ -84,6 +83,7 @@
     </div>
     </div>
     <div id="timetable-mobile">
+        <!---->
         <a id="nap"><button mat-button (click)="elozo()"><-</button>{{selectedDay}}<button mat-button (click)="kovi()">-></button></a>
             <div id="ido-container">
                 @for(hely of helyek; track $index) {
