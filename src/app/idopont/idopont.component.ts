@@ -128,6 +128,15 @@ for(let i of idopontok)  {
     }
     }
   }
+  console.log(this.timetable)
+  let dummyIdo = ["8:00 9:00","9:00 10:00","11:00 12:00", "12:00 13:00", "13:00 14:00"]
+if(this.timetable.length < 1) {
+  for(let ido of dummyIdo) {
+      let e = {time:ido, reserved: ["hely","hely","hely","hely","hely","hely"]}
+      this.timetable.push(e)
+    
+  }
+}
 }
 
 helyetFoglal(event:any, index:number, h:any) {

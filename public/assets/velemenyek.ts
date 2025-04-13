@@ -1,7 +1,21 @@
 export var reviews = [
-    {name:"Lajos Lajcsi",body:"Minden fasza!"},
-    {name:"Lajos Lajcsi",body:"Minden fasza!"},
-    {name:"Lajos Lajcsi",body:"Minden fasza!"},
-    {name:"Lajos Lajcsi",body:"Minden fasza!"},
-    {name:"Lajos Lajcsi",body:"Minden fasza!"},
-]
+    {name:"Gábor Gábor", body:"Ez a termék egyszerűen fantasztikus! Mindent tud, amit ígér."},
+    {name:"Anna Anikó", body:"Nem gondoltam volna, hogy ilyen jól fog működni. Nagyon meg vagyok elégedve."},
+    {name:"Béla Bálint", body:"Hát, őszintén szólva, nem értem, miért olyan nagy szám ez. Nem volt különösebben jó."},
+    {name:"Péter Pál", body:"Elképesztő! Mindenki ezt használja, és most már értem miért."},
+    {name:"József János", body:"Kétségbeejtően gyenge minőség. Alig használtam, és már elromlott."},
+    {name:"Kata Kati", body:"Eddig a legjobb vásárlásom volt. Nem is tudom, hogy eddig miért nem vettem meg."},
+    {name:"Dávid Dávid", body:"Valószínűleg a legjobb döntésem volt, hogy megvettem. Megéri minden egyes fillért."},
+    {name:"László László", body:"Szinte minden rendben volt, de a kiszállítás katasztrófa volt. Két napig vártam, hogy megérkezzen."},
+    {name:"Zoltán Zoli", body:"Nem ajánlom senkinek. A termék nem működött, ahogy azt ígérték."},
+    {name:"Erika Erzsébet", body:"Egy szép darab. De a doboza kicsit megsérült a szállítás közben."},
+    {name:"Miklós Miklós", body:"Hogy őszinte legyek, egyáltalán nem tetszik. Sokkal jobban teljesítenek a konkurens termékek."},
+    {name:"Vera Veronika", body:"Minden rendben volt, nagyon gyors szállítás, a termék szuper."},
+    {name:"Tamás Tamás", body:"Nem akartam elhinni, de tényleg igaz, amit mondanak róla! Egyszerűen zseniális."},
+    {name:"Ádám Ádám", body:"Az ár-érték arány megfelelő, de nem hozta azt a szintet, amit vártam."},
+    {name:"Lilla Lilla", body:"Minden szuper, csak egy kis bibi, hogy a telefonálás közben néha elveszti a jelet."},
+    {name:"Balázs Balázs", body:"Nagyon csalódtam. A leírás és a valóság köszönő viszonyban sincs egymással."},
+    {name:"Rita Réka", body:"Meglepően jól teljesít. Biztosan ajánlani fogom másoknak is."},
+    {name:"Gergő Gergő", body:"Nem éri meg az árát. Az első pár használat után már meg is javítottam."},
+    {name:"László László", body:"Tökéletes, mint mindig. Imádom!"}
+];
