@@ -35,7 +35,8 @@ form {
 
 
         img {
-            width: 400px;
+            width: 500px;
+            height: 600px;
             margin: 20px;
             border: 2px solid black;
             border-radius: 40px 40px 40px 0;
@@ -91,12 +92,17 @@ form {
     .employee {
         width: 500px;
         .emp-innerBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             img {
-                margin-right: 0;
+                width: 100%;
+                height: 600px
             }
             p {
-                margin-right: 60px;
-                word-break: break-all;
+                width: 80%;
+                word-wrap: normal;
+                text-align: justify;
                 }
         }
 }

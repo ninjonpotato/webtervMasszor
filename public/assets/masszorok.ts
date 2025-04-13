@@ -1,12 +1,12 @@
 export const employees = [
-    { name: "Gipsz Jakab",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/gipsz.jpg"},
-    { name: "Nagy Béla",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/NagyBela.jpeg"   },
-    { name: "Kovács Ádám",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/KovagyAdam.webp"   },
-    { name: "Tóth Zoltán",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/TothZoltan.jpg"   },
-    { name: "Szabó Laura",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/SzaboLaura.jpeg"   },
-    { name: "Farkas Péter",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/FarkasPeter.webp"   },
-    { name: "Kiss Andrea",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/KissAndrea.jpg"   },
-    { name: "Varga Tamás",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/VasrgaTamas.jpeg"   },
-    { name: "Péter Erika",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/PeterErika.jpg"   },
-    { name: "Hugyecz István",selected: false,leiras:"Olyan a szorítása hogy a szemed is kiesik a helyéről",img:"assets/Images/HugyeczIstvan.jpg"  }
+    { name: "Gipsz Jakab", selected: false, leiras: "Gipsz Jakab a masszázs mestere, aki a legnehezebb izomfeszültséget is képes oldani. A kezei olyanok, mint a gipsz, amelyek enyhítik a fájdalmat és nyugalmat hoznak minden feszültség után." , img: "assets/Images/gipsz.jpg" },
+    { name: "Nagy Béla", selected: false, leiras: "Nagy Béla masszázsai igazi feltöltődést jelentenek. Nyugodt, erőteljes kezei szinte varázsolnak, és minden egyes mozdulata arra irányul, hogy teljes harmóniát találj a testedben." , img: "assets/Images/NagyBela.jpeg" },
+    { name: "Kovács Ádám", selected: false, leiras: "Kovács Ádám masszázsai igazi kényeztetést jelentenek. Bárhol is van, mindig precízen és figyelmesen dolgozik, hogy a legjobb eredményt érje el." , img: "assets/Images/KovagyAdam.webp" },
+    { name: "Tóth Zoltán", selected: false, leiras: "Tóth Zoltán masszázsai segítenek elfelejteni a napi fáradalmakat. A kezei simogatása olyan, mintha minden feszültség elolvadna, és a nyugalom hulláma átjárná a testet." , img: "assets/Images/TothZoltan.jpg" },
+    { name: "Szabó Laura", selected: false, leiras: "Szabó Laura egy igazi masszázsvarázsló, aki képes a legfeszültebb izmokat is teljesen ellazítani. Finom érintései és határozott mozdulatai egyedülálló kényeztetést adnak." , img: "assets/Images/SzaboLaura.jpeg" },
+    { name: "Farkas Péter", selected: false, leiras: "Farkas Péter masszázsai igazi erőt adnak. A kezei képesek a legnagyobb fájdalmakat is enyhíteni, miközben figyelmesen dolgozik, hogy mindenki a legnagyobb kényelmet élvezze." , img: "assets/Images/FarkasPeter.webp" },
+    { name: "Kiss Andrea", selected: false, leiras: "Kiss Andrea masszázsai a tiszta harmóniát adják. Bármilyen nehézséggel érkezel, ő mindig a megfelelő technikákkal segít, hogy teljesen ellazulhass." , img: "assets/Images/KissAndrea.jpg" },
+    { name: "Varga Tamás", selected: false, leiras: "Varga Tamás a mélyszöveti masszázs mestere. A kezei az izmok legmélyebb rétegeibe is elérnek, hogy az összes feszültséget oldják és végre megnyugodj." , img: "assets/Images/VasrgaTamas.jpeg" },
+    { name: "Péter Erika", selected: false, leiras: "Péter Erika masszázsai igazi relaxációt biztosítanak. A precíz mozdulatai és finom technikái képesek minden stresszt eloszlatni, hogy a test és lélek teljesen feltöltődjenek." , img: "assets/Images/PeterErika.jpg" },
+    { name: "Hugyecz István", selected: false, leiras: "Hugyecz István masszázsai mindig energizálóak és frissítőek. A gyors, dinamikus mozdulatok mellett a kezei olyan hatékonysággal dolgoznak, hogy azonnal érezni fogod a különbséget." , img: "assets/Images/HugyeczIstvan.jpg" }
 ];
