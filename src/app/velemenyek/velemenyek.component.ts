@@ -6,10 +6,12 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import { Review } from '../../../public/assets/interfaces';
 import { reviews } from '../../../public/assets/velemenyek';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-velemenyek',
-  imports: [MatButtonModule,MatInputModule,MatFormFieldModule,FormsModule,MatCardModule,ReactiveFormsModule],
+  imports: [MatButtonModule,MatInputModule,MatFormFieldModule,FormsModule,MatCardModule,ReactiveFormsModule,MatPaginatorModule],
   templateUrl: './velemenyek.component.html',
   styleUrl: './velemenyek.component.scss',
 })
@@ -20,7 +22,6 @@ export class VelemenyekComponent {
   nev = new FormControl('')
 
   velemenyez() {
-    alert("Köszönjük!")
     reviews.push({name:this.nev.value || "",body:this.uzenet.value || ""})
   }
 }

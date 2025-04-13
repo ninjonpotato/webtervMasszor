@@ -6,10 +6,12 @@ import { IdopontComponent } from './idopont/idopont.component';
 import { RolunkComponent } from './rolunk/rolunk.component';
 import { VelemenyekComponent } from './velemenyek/velemenyek.component';
 import {MatButtonModule} from '@angular/material/button';
+import { ServiceCardComponent } from './service-card/service-card.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,MenuComponent,FooldalComponent,IdopontComponent,RolunkComponent,VelemenyekComponent,MatButtonModule],
+  imports: [RouterOutlet,MenuComponent,FooldalComponent,IdopontComponent,RolunkComponent,VelemenyekComponent,MatButtonModule,ServiceCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

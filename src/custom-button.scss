@@ -1,5 +1,10 @@
 @use '@angular/material' as mat;
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+@include mat.core();
+
 button {
 
   @include mat.theme((
@@ -18,6 +23,14 @@ input,textarea {
   @include mat.theme((
     color: mat.$red-palette,
     
+    typography: Roboto,
+    density: -5
+  ));
+}
+
+mat-spinner,mat-progress-spinner {
+  @include mat.theme((
+    color: mat.$red-palette,
     typography: Roboto,
     density: -5
   ));

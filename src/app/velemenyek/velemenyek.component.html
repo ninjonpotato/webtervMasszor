@@ -6,6 +6,8 @@
                 <p>{{review.body}}</p>
             </div>
         }
+        <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+        </mat-paginator>
     </div>
         <mat-card id="make-review">
             <form (ngSubmit)="velemenyez()">
@@ -21,7 +23,7 @@
             <textarea matInput placeholder="Rettentően megvagyok a hellyel és a szolgáltatással elégedve" [formControl]="uzenet"></textarea><br>
         </mat-form-field>
         <mat-card-actions>
-        <button mat-raised-button color="primary" id="send" >Küldés</button>
+        <button mat-raised-button color="primary" id="send">Küldés</button>
         </mat-card-actions>
     </form>
         </mat-card>

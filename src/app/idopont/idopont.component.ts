@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -9,15 +9,16 @@ import { services } from '../../../public/assets/szolgaltatasok';
 import { employees } from '../../../public/assets/masszorok';  
 import { idopontok } from '../../../public/assets/idopontok';  
 import { Service, Employee,Table } from '../../../public/assets/interfaces';  
-import {NgClass} from '@angular/common';
+import {NgClass, NgStyle} from '@angular/common';
 import { Router } from '@angular/router';
 import { MatButton } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
 @Component({
   selector: 'app-idopont',
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule,MatChipsModule,MatCardModule,NgClass,MatButton],
+  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule,MatChipsModule,MatCardModule,NgClass,MatButton,MatProgressSpinnerModule,NgStyle],
   providers: [provideNativeDateAdapter()],
   templateUrl: './idopont.component.html',
   styleUrl: './idopont.component.scss'
@@ -39,6 +40,7 @@ export class IdopontComponent {
   selectedDayfromTable = [] 
   index = 0;
   helyek:Table[] = []
+  isLoading = false
 
   constructor (private router:Router) {
     this.isServiceChoosen = false;
@@ -51,6 +53,7 @@ export class IdopontComponent {
     let state = nav?.extras.state as {service: Service}
       try {
       this.selectedService = state.service
+
       this.isServiceChoosen = true
       for(let s of services) {
         if(s.name == this.selectedService.name) {
@@ -130,12 +133,18 @@ for(let i of idopontok)  {
 helyetFoglal(event:any, index:number, h:any) {
   if(h != "foglalt") {
     let p = prompt("Milyen néven szeretnéd lefoglalni?")
+    this.isLoading = true
+    setTimeout(()=>{
+      this.isLoading = false
       h = "foglalt"
       if(index == -1) {
         event.hely = h
       }else {
         event.reserved[index] = h
       }
+    },1000)
+      
+
 
 
   }

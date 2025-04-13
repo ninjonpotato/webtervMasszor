@@ -7,10 +7,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { Service, Hir } from '../../../public/assets/interfaces';  
 import { UppercasePipe } from '../uppercase.pipe';
+import { ServiceCardComponent } from '../service-card/service-card.component';
+import { MatDivider } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-fooldal',
-  imports: [NgClass,NgStyle,MatCardModule,MatButtonModule,RouterLink,UppercasePipe],
+  imports: [NgClass,NgStyle,MatCardModule,MatButtonModule,RouterLink,UppercasePipe,ServiceCardComponent,MatDivider,MatListModule,MatProgressSpinnerModule],
   templateUrl: './fooldal.component.html',
   styleUrl: './fooldal.component.scss'
 })
@@ -26,9 +30,6 @@ isOpen = false;
 constructor(private router:Router) {
 
 }
-atiranyit(s:Service) {
-  this.router.navigate(["/idopont"],{state:{service:s}});
-}
 openHir(h:Hir) {
   this.hir = h
   console.log(this.hir)
@@ -37,4 +38,8 @@ openHir(h:Hir) {
 bezarHir() {
 this.isOpen = false
 }
+atiranyit(s: any) {
+ // console.log(s)
+  this.router.navigate(["/idopont"],{state:{service:s}});
+} 
 }

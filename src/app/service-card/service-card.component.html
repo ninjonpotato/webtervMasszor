@@ -1,0 +1,11 @@
+<mat-card class="service" appearance="outlined" (click) ="kivalaszt()" >
+    <mat-card-header>
+        <mat-card-title>
+            <h3>{{service.name}}</h3>
+            </mat-card-title>
+        </mat-card-header>
+    <img mat-card-img [src]="service.img"> 
+    <mat-card-content>
+    <p>{{service.text}}</p>
+    </mat-card-content>
+</mat-card>

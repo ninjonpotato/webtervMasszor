@@ -1,5 +1,7 @@
+<div id="load" [ngStyle]="{'display': isLoading? 'flex' : 'none'}">
+<mat-spinner><p>asd</p></mat-spinner>
+</div>
 <div class="container">
-
     <!--Szolgáltatások kilistázva-->
     <div id="service">
     <mat-card>
@@ -46,8 +48,6 @@
         </mat-form-field>
       }
       </div>
-
-
    @if(datum != null) {
     <h2>Időpontok</h2>
     <!--ciklussal-->

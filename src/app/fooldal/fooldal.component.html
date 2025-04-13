@@ -3,12 +3,13 @@
     <div id="hirek">
         <h2>Hírek</h2>
     <div class="hir-container">
-        <ul>
+        <mat-list role="list">
             @for(h of hirek; track $index) {
-                <li (click)="openHir(h)">{{h.headline | uppercase}}</li>
+                <mat-list-item (click)="openHir(h)">{{h.headline | uppercase}}</mat-list-item>
+             
+                <mat-divider></mat-divider>
             }
-
-        </ul>
+          </mat-list>
         
     </div>
     </div>
@@ -29,17 +30,10 @@
         <h2>Szolgáltatásaink</h2>
         <div id="services-inner">
             @for(service of services; track $index) {
-                <mat-card class="service" appearance="outlined" (click) ="atiranyit(service)" >
-                    <mat-card-header>
-                        <mat-card-title>
-                            <h3>{{service.name}}</h3>
-                            </mat-card-title>
-                        </mat-card-header>
-                    <img mat-card-img [src]="service.img"> 
-                    <mat-card-content>
-                    <p>{{service.text}}</p>
-                    </mat-card-content>
-                </mat-card>
+                <app-service-card
+                [service] = "service"
+                (kattintas) = "atiranyit($event)"
+                ></app-service-card>
             }
         </div>
 

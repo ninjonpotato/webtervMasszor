@@ -6,6 +6,21 @@ $brown: #f1b58aa9;
     flex-direction: row;
     justify-content: center;
 }
+#load {
+    position: absolute;
+    width: 100%;
+align-items: center;
+justify-content: center;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+mat-spinner {
+  position: relative;
+  z-index: 9999;
+    position: absolute;
+}
 h2 {
     text-align: center;
 }
