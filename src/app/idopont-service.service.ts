@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Idopot, Review } from '../../public/assets/interfaces';
 import { firstValueFrom, from, map, Observable, of } from 'rxjs';
-import { doc, collection, setDoc,Firestore, getDocs, query, where, collectionData, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { doc, collection, setDoc,Firestore, getDocs, query, where, collectionData, updateDoc, deleteDoc, QueryConstraint } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -32,7 +32,42 @@ async addIdopont(kinel:string,mikor:string,nap:string,tipus:string): Promise<voi
     throw error;
   }
 }
+filterByObj(ido:Idopot):Observable<Idopot[]> {
+ const reviewsRef = collection(this.firestore, 'Idopontok');
 
+  const constraints: QueryConstraint[] = [];
+
+  if (ido.mikor) {
+    constraints.push(where('mikor', '==', ido.mikor));
+  }
+
+  if (ido.kinel) {
+    constraints.push(where('kinel', '==', ido.kinel));
+  }
+
+  if (ido.tipus) {
+    constraints.push(where('tipus', '==', ido.tipus));
+  }
+
+  const q = query(reviewsRef, ...constraints);
+
+  return collectionData(q, { idField: 'id' }) as Observable<Idopot[]>;
+}
+filterByIdo(ido:Idopot):Observable<Idopot[]> {
+   const reviewsRef = collection(this.firestore, 'Idopontok');
+  const q = query(reviewsRef, where('mikor', '==', ido.mikor));
+   return collectionData(q, { idField: 'id' }) as Observable<Idopot[]>;
+}
+filterByType(ido:Idopot):Observable<Idopot[]> {
+   const reviewsRef = collection(this.firestore, 'Idopontok');
+  const q = query(reviewsRef, where('tipus', '==', ido.tipus));
+   return collectionData(q, { idField: 'id' }) as Observable<Idopot[]>;
+}
+filterByName(ido:Idopot):Observable<Idopot[]> {
+   const reviewsRef = collection(this.firestore, 'Idopontok');
+  const q = query(reviewsRef, where('kinel', '==', ido.kinel));
+   return collectionData(q, { idField: 'id' }) as Observable<Idopot[]>;
+}
 
 getIdopontsByUserId(userId: string): Observable<Idopot[]> {
   const reviewsRef = collection(this.firestore, 'Idopontok');

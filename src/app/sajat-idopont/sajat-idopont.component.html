@@ -1,7 +1,33 @@
 <div id="container">
+    <div id="inner-c">
+<div id="search">
+     <form (ngSubmit)="search()">
+                <mat-card-header>
+                    <mat-card-title>Kereső</mat-card-title>
+                </mat-card-header>
+                <mat-form-field>
+                <mat-label>Név</mat-label>
+                <input matInput type="text" placeholder="GipszJakab@gmail.com" [formControl]="nev"><br>
+                </mat-form-field><br>
+                <mat-form-field>
+                <mat-label>Szolgáltatás</mat-label>
+                <input matInput type="text" placeholder="GipszJakab@gmail.com" [formControl]="service"><br>
+                </mat-form-field><br>
+                <mat-form-field>
+                <mat-label>Dátum</mat-label>
+                <input matInput type="date" placeholder="GipszJakab@gmail.com" [formControl]="datum"><br>
+                </mat-form-field><br>
+            <mat-card-actions>
+            <button mat-raised-button color="primary" id="send">Keresés</button>
+            </mat-card-actions>
+        </form>
+</div>
+<div id="idopont">
     <h1>Időpontjaid</h1>
+    <button mat-raised-button color="primary" (click)="reset()">reset</button>
 @for(i of idopontok; track $index){
-        <app-idopont-card [idopont]="i"></app-idopont-card>
+        <app-idopont-card [idopont]="i" (szuresKerelem)="rendezIdopont($event)"></app-idopont-card>
 }
-
+</div>
+</div>
 </div>

@@ -1,3 +1,7 @@
+$grey: rgb(82, 82, 82);
+$lgrey: rgb(182, 182, 182);
+$brown: #f1b58aa9;
+$brown-full: #f1b58a;
 .card {
     position: relative;
         justify-content: space-evenly;
@@ -6,13 +10,19 @@
         font-size: 30px;
         justify-content: center;
         border-right: 1px solid black;
+        border-radius: 4px;
         padding: 20px;
       
+    }
+    div:hover {
+        color: white;
+        cursor: pointer;
+        background-color: $lgrey;
+        
     }
      a:last-child {
         border: none;
      }
-
     margin-top: 30px;
     width: 600px;
     display: flex;
@@ -31,3 +41,4 @@
         cursor: pointer;
     }
 }
+

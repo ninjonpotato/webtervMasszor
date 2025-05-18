@@ -1,6 +1,6 @@
 <div class="card">
-     <a>{{idopont?.mikor}} {{idopont?.nap}}</a>
-     <a>{{idopont?.tipus}}</a>
-     <a>{{idopont?.kinel}}</a>
+    <div><a (click)="rendez(idopont!,'ido')">{{idopont?.mikor}} {{idopont?.nap}}</a></div>
+       <div><a (click)="rendez(idopont!,'tipus')">{{idopont?.tipus}}</a></div>
+       <div><a (click)="rendez(idopont!,'nev')">{{idopont?.kinel}}</a></div>
     <button class="cancel" (click)="cancelIdopont(idopont!)">cancel</button>
 </div>

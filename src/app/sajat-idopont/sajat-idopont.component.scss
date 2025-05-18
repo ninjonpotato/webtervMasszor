@@ -2,4 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+    position: relative;
+}
+#inner-c {
+   display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+#search {
+position: absolute;
+left: 30px;
+top: 100px;
+border: 2px solid black;
+padding: 20px;
+border-radius: 15px 20px;
 }
