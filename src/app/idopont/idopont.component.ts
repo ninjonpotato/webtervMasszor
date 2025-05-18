@@ -133,18 +133,25 @@ for(let i of idopontok)  {
     if(i.service == service && i.employee == this.selectedEmployee) {
     this.timetable = i.timetable
     this.selectedDay = this.napok[this.index]
+    let index = 0
     for(let h of this.timetable) {
+      console.log(this.timetable)
        for(let t of this.foglaltIdopontok!) {
         let idoSplit = t.mikor.split(" ")
-        let ido = idoSplit[1].split(":") 
         let hSplit = h.time.split(" ")
-        console.log(hSplit[0] + " " + ido[0])
-        if(ido[0]+":00" == hSplit[0]) {
-          h.reserved[this.index] = "foglalt"
+
+        if(idoSplit[1] == hSplit[0]) {
+          for(let n in this.napok) {
+            if(this.napok[n] == t.nap) {
+             h.reserved[n] = "foglalt"
+            }
+          }
+       
         }
        }
       let tab:Table = {time:h.time, hely:h.reserved[this.index]}
       this.helyek.push(tab)
+      index++;
     }
     }
   }
@@ -159,7 +166,7 @@ if(this.timetable.length < 1) {
         let ido = idoSplit[1].split(":") 
         let hSplit = e.time.split(" ")
         console.log(hSplit)
-        if(ido[0]+":00" == hSplit[0]) {
+        if(ido[0]+":00" == hSplit[0] && this.selectedService.name == t.tipus && this.selectedEmployee == t.kinel) {
           console.log()
           e.reserved[this.index] = "foglalt"
         }
