@@ -3,4 +3,12 @@
     <a routerLink="/idopont">Időpont foglalás</a>
     <a routerLink="/velemenyek">Vélemyének</a>
     <a routerLink="/rolunk">Rólunk</a>
+    @if(loginService.getStatus() == false) {
+        <a routerLink="/login">Belépés</a>
+    }@else {
+        <a routerLink="/sajat_idopont">Foglalt időpontjaim</a>
+        <a routerLink="/fiok">Fiók</a>
+        <a (click)="signOut()">Kilépés</a>
+    }
+   
 </nav>

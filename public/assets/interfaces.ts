@@ -19,10 +19,19 @@ export interface Service {
   } 
 
   export interface Review {
+    id:string;
+    userid:string
     name:string,
-    body:string
+    body:string,
+    time: string
   }
   export interface Table {
     time:string;
     hely:string;
+  }
+
+    export interface User {
+    id:string;
+    name:string;
+    email:string;
   }

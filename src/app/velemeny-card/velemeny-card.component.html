@@ -1,0 +1,7 @@
+<div class="review">
+         <a>{{review.name}}</a>
+                <p>{{review.body}}</p>
+                <p>{{review.time | reviewTime}} </p>
+                <button (click)="deleteReview(review)"[ngStyle]="{display: myReview(review) && authService.getStatus() ? 'block' : 'none'}">Törlés</button>
+                <button (click)="nyitDialog(review)"[ngStyle]="{display: myReview(review) && authService.getStatus() ? 'block' : 'none'}">Szerkesztés</button>
+ </div>

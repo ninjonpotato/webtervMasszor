@@ -1,0 +1,8 @@
+<mat-card id="container">
+    <div [ngClass]="{'hide':isLogin}">
+           <app-signup-card (valtas)="valtasToLogin($event)"></app-signup-card>
+    </div>
+     <div [ngClass]="{'hide':isSignUp}">
+           <app-login-card (valtas)="valtasToSignUp($event)"></app-login-card>
+    </div>
+</mat-card>
