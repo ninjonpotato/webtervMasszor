@@ -20,27 +20,7 @@ padding: 20px;
 border-radius: 15px 20px;
 }
 
-
-@media screen and (max-width: 1000px) {  
-    
-#search {
-position: relative;
-display: flex;
-align-content: center;
-border: 2px solid black;
-margin: 0;
-left: auto;
-top: auto;
-justify-content: center;
-justify-self: center;
-max-width: 300px;
-margin-top: 30px;
-border-radius: 15px 20px;
-}
-}
-
-
-@media screen and (max-width: 700px) { 
+@media screen and (max-width: 1300px) { 
 
   #container {
     display: block;

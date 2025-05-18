@@ -7,7 +7,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { services } from '../../../public/assets/szolgaltatasok'; 
 import { employees } from '../../../public/assets/masszorok';  
-import { idopontok } from '../../../public/assets/idopontok';  
 import { Service, Employee,Table, User, Idopot } from '../../../public/assets/interfaces';  
 import {NgClass, NgStyle} from '@angular/common';
 import { Router } from '@angular/router';
@@ -15,6 +14,7 @@ import { MatButton } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { IdopontServiceService } from '../idopont-service.service';
 import { UserService } from '../user.service';
+import { idopontok } from '../../../public/assets/idopontok';
 
 
 
@@ -30,7 +30,7 @@ export class IdopontComponent implements OnInit {
   services = services;
   napok = ["Hétfő","Kedd","Szerda","Csütörtök","Péntek","Szombat"]
   employees = employees;
-  idopontok = idopontok
+  idopontok =idopontok
   isServiceChoosen = false;
   isEmployeeChoosen = false;
   selectedService:any= "";
