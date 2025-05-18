@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
     position: relative;
+    text-align: center;
 }
 #inner-c {
    display: flex;
@@ -18,3 +19,60 @@ border: 2px solid black;
 padding: 20px;
 border-radius: 15px 20px;
 }
+
+
+@media screen and (max-width: 1000px) {  
+    
+#search {
+position: relative;
+display: flex;
+align-content: center;
+border: 2px solid black;
+margin: 0;
+left: auto;
+top: auto;
+justify-content: center;
+justify-self: center;
+max-width: 300px;
+margin-top: 30px;
+border-radius: 15px 20px;
+}
+}
+
+
+@media screen and (max-width: 700px) { 
+
+  #container {
+    display: block;
+
+}
+
+#inner-c {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-self: center;
+}
+#idopont {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-self: center;
+}
+#search {
+position: relative;
+display: flex;
+align-content: center;
+border: 2px solid black;
+margin: 0;
+left: auto;
+top: auto;
+justify-content: center;
+justify-self: center;
+max-width: 300px;
+margin-top: 30px;
+border-radius: 15px 20px;
+}
+}
+
+

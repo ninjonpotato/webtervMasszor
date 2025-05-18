@@ -4,7 +4,7 @@ $brown: #f1b58aa9;
 $brown-full: #f1b58a;
 .card {
     position: relative;
-        justify-content: space-evenly;
+    justify-content: space-evenly;
     a {
         display: flex;
         font-size: 30px;
@@ -42,3 +42,16 @@ $brown-full: #f1b58a;
     }
 }
 
+
+@media screen and (max-width: 600px) {  
+    .card {
+        width: fit-content;
+max-width: 550px;
+        justify-content: space-evenly;
+
+        .cancel {
+      right: 0;
+    }
+    }
+    
+}

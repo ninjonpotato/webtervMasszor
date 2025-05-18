@@ -26,15 +26,7 @@ export class SajatIdopontComponent implements OnInit {
   constructor(private idopontService:IdopontServiceService, private userService:UserService) {
 
   }
-/**
- * 
- *     id:string,
-    kinel:string,
-    mikor:string,
-    nap:string,
-    tipus:string,
-    userId:string
- */
+
   search() {
     let i:Idopot = {
       id:"",
