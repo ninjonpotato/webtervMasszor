@@ -14,17 +14,17 @@ export const routes: Routes = [
 {
     path:"idopont",
     loadComponent: ()=> import('./idopont/idopont.component').then(m=>m.IdopontComponent),
-     canActivate: [publicGuard]
+
 },
 {
     path:"velemenyek",
     loadComponent: ()=> import('./velemenyek/velemenyek.component').then(m=>m.VelemenyekComponent),
-     canActivate: [publicGuard]
+     
 },
 {
     path:"rolunk",
     loadComponent: ()=> import('./rolunk/rolunk.component').then(m=>m.RolunkComponent),
-     canActivate: [publicGuard]
+   
 },
 {
     path:"login",

@@ -15,7 +15,7 @@ import { VelemenyCardComponent } from '../velemeny-card/velemeny-card.component'
 import { AuthService } from '../auth.service';
 import { User as FUser } from '@angular/fire/auth';
 import { UserService } from '../user.service';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-fiok',
@@ -25,26 +25,18 @@ import { firstValueFrom } from 'rxjs';
 })
 export class FiokComponent implements OnInit {
 
-  myReviews:Review[] = []
-  user:User | null | undefined;
-  constructor(private reviewService:ReviewService, private userService: UserService) {
-   this.reviewService.getMyReviews().subscribe(data =>{
-    this.myReviews = data;
-
-   })
+  myReviews:Review[] | undefined
+  user:User | undefined;
+  constructor(private reviewService:ReviewService, private userService: UserService, private authService:AuthService) {
   }
   async ngOnInit(): Promise<void> {
     this.userService.getUser().subscribe(user =>{
-      this.user = user;
-      console.log(this.user)
+        this.user = user;
+          console.log(this.user!.id)
+         this.reviewService.getReviewsByUserId(this.user!.id).subscribe(data =>{           
+         this.myReviews = data
+       })
     })
 
-     const user = await firstValueFrom(this.userService.getUser());
-      if (this.user) {
-        this.reviewService.getReviewsByUserId(this.user.id).then(reviews => {
-          console.log("Felhasználó review-jai:", reviews);
-          this.myReviews = reviews; // ha a HTML-ben is ki akarod írni
-        });
-      }
   }
 }

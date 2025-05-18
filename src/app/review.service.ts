@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Review } from '../../public/assets/interfaces';
-import { firstValueFrom, Observable, of } from 'rxjs';
-import { doc, collection, setDoc,Firestore, getDocs, query, where } from '@angular/fire/firestore';
+import { firstValueFrom, from, map, Observable, of } from 'rxjs';
+import { doc, collection, setDoc,Firestore, getDocs, query, where, collectionData, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ReviewService {
-
-  constructor(private firestore:Firestore,private authService:AuthService) {
-    
-   }
-   private reviews:Review[] = [];
+export class ReviewService{
+  public reviews:Review[] = [];
     public myReviews:Review[] =[];
+  constructor(private firestore:Firestore,private authService:AuthService) {
+   }
+
     
 async addReview(name: string, body: string,time:string): Promise<void> {
   try {
@@ -44,9 +43,6 @@ async addReview(name: string, body: string,time:string): Promise<void> {
     getreviews(): Observable<Review[]> {
       return of(this.reviews);
     }
-    getMyReviews():Observable<Review[]> {
-         return of(this.myReviews);
-    }
     getReview(name:string, pass:string, time:string):Observable<Review | undefined>{
       let tmpU:Review = {id:"",userid:"",name:name, body:pass, time:time};
       let Review = this.reviews.find(u => this.egyezik(u,tmpU))
@@ -61,32 +57,22 @@ async addReview(name: string, body: string,time:string): Promise<void> {
     })
   }
 
-  getReviewsByUserId(userId: string): Promise<Review[]> {
+getReviewsByUserId(userId: string): Observable<Review[]> {
   const reviewsRef = collection(this.firestore, 'Reviews');
   const q = query(reviewsRef, where('userid', '==', userId));
 
-  return getDocs(q).then(snapshot => {
-    return snapshot.docs.map(doc => doc.data() as Review);
-  });
+  return collectionData(q, { idField: 'id' }) as Observable<Review[]>;
 }
 
-  getReviews(): Promise<Review[]> {
+  getReviews(): Observable<Review[]> {
   const reviewsRef = collection(this.firestore, 'Reviews');
-  const q = query(reviewsRef);
-
-  return getDocs(q).then(snapshot => {
-    return snapshot.docs.map(doc => doc.data() as Review);
-  });
+  return collectionData(reviewsRef, { idField: 'id' }) as Observable<Review[]>;
 }
 
-
-     updateReview(upReview: Review): Observable<Review> {
-      let index = this.reviews.findIndex(u => this.egyezik(u,upReview))
-          if (index > -1) {
-       this.reviews[index] = upReview;
-          }
-        return of(upReview);
-     }
+    updateReview(id: string, updatedFields: Partial<Review>): Promise<void> {
+  const reviewRef = doc(this.firestore, 'Reviews', id);
+  return updateDoc(reviewRef, updatedFields);
+}
   
      egyezik(u1:Review, u2:Review):boolean {
     if(u1.name == u2.name && u1.body == u2.body && u1.time == u2.time) {
@@ -102,18 +88,9 @@ async addReview(name: string, body: string,time:string): Promise<void> {
     return false;
      }
   
-     deleteService(Review:Review): Observable<boolean> {
-      const index = this.reviews.findIndex(u => this.egyezik(u,Review));
-      const index2 = this.myReviews.findIndex(u => this.egyezik(u,Review));
-      if (index > -1 && index2 > -1) {
-        this.reviews.splice(index, 1);
-        this.myReviews.splice(index2, 1);
-        console.log("Törlés sikeres")
-        return of(true);
-      }else {
-        console.log("Nem sikerült a törlés")
-      }
-      return of(false);
+     deleteService(id:string): Promise<void>{
+       const reviewRef = doc(this.firestore, 'Reviews', id);
+      return deleteDoc(reviewRef);
     }
       createReview(reviewid:string,review:Review):Promise<void> {
         const reviewRef = doc(collection(this.firestore, 'Reviews'), reviewid);

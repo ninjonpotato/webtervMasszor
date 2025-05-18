@@ -16,6 +16,10 @@ export class AuthService {
 currentUser: Observable<FUser | null>
   constructor(private auth:Auth,private router:Router, private firestore:Firestore) {
     this.currentUser = authState(auth)
+
+    this.currentUser.subscribe(user => {
+    this.LoggedIn = !!user;
+  });
   }
 
   signIn(email:string,passwd:string): Promise<UserCredential> {
@@ -52,9 +56,6 @@ getCurrentUserData(): Observable<any | undefined> {
     return this.LoggedIn
   }
 
-  //Fióknál kiirni a nevet meg a emailt.
-  //Valami szűrés
-  //Valamelyik route guardolása.
   async singUp(email:string, password:string, user:User):Promise<UserCredential>{
     try{
       const creds = await createUserWithEmailAndPassword(this.auth,email,password)

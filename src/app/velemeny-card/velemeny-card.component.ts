@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Review } from '../../../public/assets/interfaces';
+import { Review, User } from '../../../public/assets/interfaces';
 import { NgClass, NgStyle } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,26 +31,28 @@ export class VelemenyCardComponent {
 
   }
   edited: string = '';
-  myReviews:Review[] =[]
+  reviews:Review[] =[]
+  user: User |undefined;
   constructor (private reviewService:ReviewService,public authService:AuthService, public userService:UserService,private dialog: MatDialog,){
-    reviewService.getMyReviews().subscribe(data =>{
-      this.myReviews= data;
-    })
+      this.reviewService.getReviews().subscribe(rev =>{
+          this.reviews = rev
+      })
+      this.userService.getUser().subscribe(u =>{
+        this.user = u;
+      })
   }
 
-    myReview(review:Review):Observable<boolean> {
-        return this.userService.getUser().pipe(
-         map(user => review.userid === user?.id)
-       );
+    myReview(review:Review):boolean {
+          return review.userid == this.user?.id
   
     }
     deleteReview(review:Review) {
-     this.reviewService.deleteService(review)
+     this.reviewService.deleteService(review.id)
     }
     editReview(review:Review) {
       let date = new Date();
       review.time= date.getFullYear()+"."+date.getMonth()+"."+date.getDay()+" "+date.getHours()+":"+date.getMinutes() + " (szerkesztve)"
-     this.reviewService.updateReview(review)
+     this.reviewService.updateReview(review.id,review)
     }
       nyitDialog(review:Review) {
     const dialogRef = this.dialog.open(InputVelemenyEditComponent, {

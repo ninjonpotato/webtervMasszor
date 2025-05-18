@@ -13,7 +13,7 @@ import { ReviewService } from '../review.service';
 import {NgClass, NgStyle} from '@angular/common';
 import { InputVelemenyEditComponent } from '../input-velemeny-edit/input-velemeny-edit.component';
 import { AuthService } from '../auth.service';
-import { firstValueFrom, Subscription } from 'rxjs';
+import { firstValueFrom, Observable, Subscription } from 'rxjs';
 import { VelemenyCardComponent } from '../velemeny-card/velemeny-card.component';
 import { UserService } from '../user.service';
 
@@ -28,34 +28,19 @@ constructor(private reviewService:ReviewService,private dialog: MatDialog, publi
 }
 
   reviews:Review[] = []
-  myReviews:Review[] = [];
-  user: User | null | undefined
+  user: User| undefined
   get isLoggedIn():boolean {
     return true
   }
   feliratkozas!: Subscription
   size = 0;
-  async ngOnInit(): Promise<void> {
-
-    const user = await firstValueFrom(this.authService.getCurrentUser());
-  if (user) {
-    this.reviewService.getReviews().then(reviews => {
-      console.log("Felhasználó review-jai:", reviews);
-      this.reviews = reviews; // ha a HTML-ben is ki akarod írni
+  ngOnInit(){
+    this.userService.getUser().subscribe(u =>{
+      this.user = u
     });
-  }
-
-
-   this.feliratkozas = this.reviewService.getMyReviews().subscribe(data =>{
-    this.myReviews = data;
+   this.feliratkozas = this.reviewService.getReviews().subscribe(data =>{
+    this.reviews = data
    })
-this.userService.getUser().subscribe(user =>{
-  if(this.authService.LoggedIn){
-          this.user = user;
-      console.log(this.user)
-  }
-
-    })
   
   }
     ngOnDestroy(): void {
@@ -71,10 +56,13 @@ this.userService.getUser().subscribe(user =>{
   velemenyez() {
     if(this.authService.getStatus()){
    const date = new Date();
-  const year = date.getFullYear();     // pl. 2025
-  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 2 számjegyű hónap
+  const year = date.getFullYear();     
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const day = date.getDate().toString().padStart(2, '0');   
   const formatted = `${year}.${month}.${day}`;
+ this.userService.getUser().subscribe(data=>{
+this.user = data
+  })
     this.reviewService.addReview(this.user!.name, this.uzenet.value || "szótlanul maradtam..", formatted)
   .then(() => {
     console.log("Review sikeresen hozzáadva.");
@@ -82,8 +70,6 @@ this.userService.getUser().subscribe(user =>{
   .catch((error) => {
     console.error("Hiba a review hozzáadásánál:", error);
   });
-
-   // this.reviewService.addMyReview(review)
     }
     else {
       alert("Nem szabadna ezt megnyomnod..")
