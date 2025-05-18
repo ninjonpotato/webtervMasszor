@@ -30,6 +30,14 @@ export interface Service {
     hely:string;
   }
 
+  export interface Idopot {
+    id:string,
+    kinel:string,
+    mikor:string,
+    nap:string,
+    tipus:string,
+    userId:string
+  }
     export interface User {
     id:string;
     name:string;

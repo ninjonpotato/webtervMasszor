@@ -1,1 +1,7 @@
-<p>sajat-idopont works!</p>
+<div id="container">
+    <h1>Időpontjaid</h1>
+@for(i of idopontok; track $index){
+        <app-idopont-card [idopont]="i"></app-idopont-card>
+}
+
+</div>

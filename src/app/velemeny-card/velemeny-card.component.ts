@@ -50,8 +50,12 @@ export class VelemenyCardComponent {
      this.reviewService.deleteService(review.id)
     }
     editReview(review:Review) {
-      let date = new Date();
-      review.time= date.getFullYear()+"."+date.getMonth()+"."+date.getDay()+" "+date.getHours()+":"+date.getMinutes() + " (szerkesztve)"
+       const date = new Date();
+  const year = date.getFullYear();     
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');   
+  const formatted = `${year}.${month}.${day}`;
+      review.time= formatted + " (szerkesztve)"
      this.reviewService.updateReview(review.id,review)
     }
       nyitDialog(review:Review) {

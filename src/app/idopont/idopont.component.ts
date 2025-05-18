@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -8,11 +8,13 @@ import { MatInputModule } from '@angular/material/input';
 import { services } from '../../../public/assets/szolgaltatasok'; 
 import { employees } from '../../../public/assets/masszorok';  
 import { idopontok } from '../../../public/assets/idopontok';  
-import { Service, Employee,Table } from '../../../public/assets/interfaces';  
+import { Service, Employee,Table, User, Idopot } from '../../../public/assets/interfaces';  
 import {NgClass, NgStyle} from '@angular/common';
 import { Router } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { IdopontServiceService } from '../idopont-service.service';
+import { UserService } from '../user.service';
 
 
 
@@ -23,7 +25,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './idopont.component.html',
   styleUrl: './idopont.component.scss'
 })
-export class IdopontComponent {
+export class IdopontComponent implements OnInit {
 
   services = services;
   napok = ["Hétfő","Kedd","Szerda","Csütörtök","Péntek","Szombat"]
@@ -41,11 +43,15 @@ export class IdopontComponent {
   index = 0;
   helyek:Table[] = []
   isLoading = false
-
-  constructor (private router:Router) {
+  user:User | undefined;
+  foglaltIdopontok:Idopot[] | undefined
+  constructor (private router:Router, private idopontService:IdopontServiceService,private userService:UserService) {
     this.isServiceChoosen = false;
     this.isEmployeeChoosen = false;
     this.selectedArray = []
+    idopontService.getIdopont().subscribe(data=>{
+      this.foglaltIdopontok = data
+    })
     for(let s of services) {
         s.selected = false
     }
@@ -69,6 +75,11 @@ export class IdopontComponent {
         console.log("Ezzel légyszi ne foglalkozz, ez csak nekem fontos :)")
       } 
       
+  }
+  ngOnInit(): void {
+    this.userService.getUser().subscribe(u=>{
+      this.user = u
+    })
   }
 
 showEmployees(service: Service) {
@@ -123,16 +134,36 @@ for(let i of idopontok)  {
     this.timetable = i.timetable
     this.selectedDay = this.napok[this.index]
     for(let h of this.timetable) {
+       for(let t of this.foglaltIdopontok!) {
+        let idoSplit = t.mikor.split(" ")
+        let ido = idoSplit[1].split(":") 
+        let hSplit = h.time.split(" ")
+        console.log(hSplit[0] + " " + ido[0])
+        if(ido[0]+":00" == hSplit[0]) {
+          h.reserved[this.index] = "foglalt"
+        }
+       }
       let tab:Table = {time:h.time, hely:h.reserved[this.index]}
       this.helyek.push(tab)
     }
     }
   }
-  console.log(this.timetable)
+  //Ez akkor fut le ha nincs ehez időpont kötve
   let dummyIdo = ["8:00 9:00","9:00 10:00","11:00 12:00", "12:00 13:00", "13:00 14:00"]
 if(this.timetable.length < 1) {
+  console.log("üres a timetable")
   for(let ido of dummyIdo) {
       let e = {time:ido, reserved: ["hely","hely","hely","hely","hely","hely"]}
+        for(let t of this.foglaltIdopontok!) {
+        let idoSplit = t.mikor.split(" ")
+        let ido = idoSplit[1].split(":") 
+        let hSplit = e.time.split(" ")
+        console.log(hSplit)
+        if(ido[0]+":00" == hSplit[0]) {
+          console.log()
+          e.reserved[this.index] = "foglalt"
+        }
+       }
       this.timetable.push(e)
     
   }
@@ -141,14 +172,26 @@ if(this.timetable.length < 1) {
 
 helyetFoglal(event:any, index:number, h:any) {
   if(h != "foglalt") {
-    let p = prompt("Milyen néven szeretnéd lefoglalni?")
     this.isLoading = true
     setTimeout(()=>{
       this.isLoading = false
       h = "foglalt"
       if(index == -1) {
         event.hely = h
+        console.log("első")
       }else {
+
+   const date = new Date();
+  const year = date.getFullYear();     
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');   
+  let hSplit = event.time.split(" ")
+  const formatted = `${year}.${month}.${day} ${hSplit[0]}`;
+  this.idopontService.addIdopont(this.selectedEmployee,formatted,this.napok[index],this.selectedService.name).then(() => {
+  })
+  .catch((error) => {
+    console.error("Hiba a időpont foglalásnál hozzáadásánál:", error);
+  });
         event.reserved[index] = h
       }
     },1000)

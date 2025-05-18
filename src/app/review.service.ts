@@ -88,9 +88,13 @@ getReviewsByUserId(userId: string): Observable<Review[]> {
     return false;
      }
   
-     deleteService(id:string): Promise<void>{
-       const reviewRef = doc(this.firestore, 'Reviews', id);
-      return deleteDoc(reviewRef);
+     async deleteService(id:string): Promise<void>{
+      try {
+        await deleteDoc(doc(this.firestore, 'Reviews', id));
+      }
+      catch(error) {
+         console.error('Hiba törlés közben:', error);
+      }
     }
       createReview(reviewid:string,review:Review):Promise<void> {
         const reviewRef = doc(collection(this.firestore, 'Reviews'), reviewid);
